@@ -1,8 +1,15 @@
-# pytest cache directory #
+# Validator
 
-This directory contains data from the pytest's cache plugin,
-which provides the `--lf` and `--ff` options, as well as the `cache` fixture.
+A lightweight rule-based validation library for Python.
 
-**Do not** commit this to version control.
+## Example
 
-See [the docs](https://docs.pytest.org/en/stable/how-to/cache.html) for more information.
+```python
+from validator.core import Validator
+from validator.rules import Required, MinLength
+
+schema = {
+    "username": [Required(), MinLength(3)]
+}
+
+Validator(schema).validate({"username": "user123"})
